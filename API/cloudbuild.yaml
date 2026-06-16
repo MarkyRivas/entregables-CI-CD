@@ -1,0 +1,16 @@
+steps:
+  # 1. Construir la imagen con la etiqueta de Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: 
+      - 'build'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/fast-api-test:$TAG_NAME'
+      - '.'
+
+# Cambiar el nombre del repositorio y la imagen según tu configuración
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/fast-api-test:$TAG_NAME'
+
+
+options:
+  logging: CLOUD_LOGGING_ONLY
