@@ -1,4 +1,6 @@
+# Terraform
 .terraform/
+**/.terraform/
 terraform.tfstate
 terraform.tfstate.backup
 *.tfstate
@@ -7,8 +9,11 @@ terraform.tfstate.backup
 
 # Python
 __pycache__/
+**/__pycache__/
 *.py[cod]
+**/*.py[cod]
 *$py.class
+**/*$py.class
 .env
 .venv/
 venv/
