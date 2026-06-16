@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fast-api-test-deployment
+  labels:
+    app: fast-api-test
+spec:
+  replicas: 2 # Levantaremos 2 instancias para probar alta disponibilidad
+  selector:
+    matchLabels:
+      app: fast-api-test
+  template:
+    metadata:
+      labels:
+        app: fast-api-test
+    spec:
+      containers:
+      - name: fast-api-test-container
+        image: fast-api-test:local
+        imagePullPolicy: Never # ¡Esta línea es clave!
+        ports:
+        - containerPort: 8000
+        # Es buena práctica definir recursos (CPU/Memoria)
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
